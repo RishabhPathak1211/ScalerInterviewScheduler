@@ -32,12 +32,13 @@ export default function Dashboard(props) {
     return (
         <div>
             <div>
+                <h2 className={styles.heading}>Interview List</h2>
                 {interviews.map((item) => {
                     return <Cards interview={item} />
                 })}
             </div>
             <Link to='/'>
-                <button>Home</button>
+                {/* <button>Home</button> */}
             </Link>
         </div>
 
@@ -58,23 +59,22 @@ const Cards = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.cards}>
-                <p>Starts: {startTime}</p>
-                <p>Ends: {endTime}</p>
-                <ul>
+                <h3>Starts: {startTime}</h3>
+                <h3>Ends: {endTime}</h3>
+                <div>
+                    <h3>Participants</h3>
                     {
                         props.interview.participants.map((item) => {
                             return (
-                                <li>
-                                    <p>{item.name}</p>
-                                    <p>{item.email}</p>
-                                    <p>{item.phone}</p>
-                                </li>
+                                <div className={styles.list}>
+                                    <p>{item.name} | {item.email} | {item.phone}</p>
+                                </div>
                             )
                         })
                     }
-                </ul>
+                </div>
                 <Link to={`/edit/${props.interview._id}`}>
-                    <button>Edit</button>
+                    <button className={styles.button}>Edit</button>
                 </Link>
 
             </div>
